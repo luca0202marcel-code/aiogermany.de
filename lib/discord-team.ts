@@ -1,30 +1,51 @@
 import { getToken } from '@vercel/connect'
+import { desc } from 'drizzle-orm'
+import { db } from '@/lib/db'
+import { discordTeamRoles } from '@/lib/db/schema'
+import { discordConfig, isManagedTeamRole, teamRoleIds, type DiscordTeamRole } from '@/lib/discord-team-config'
 
-const connector = 'discord/aio-teamliste'
-const guildId = '1419010493745725503'
-const teamRoleIds = new Set([
-  '1543209684482396250', '1543209685245493331', '1543209687195844609', '1543209687804158014',
-  '1543534286165123092', '1543209693105889381', '1543209694259318795', '1543209695249174569',
-  '1543209698080067716', '1543209698986172476', '1543209700085076023', '1543209701377048677',
-  '1543534393002430464', '1543209708687593495', '1543209709946011669', '1543209710755512404',
-  '1543211575098347580', '1543209703084003349', '1543209703906091140', '1543209705516826764',
-  '1543209706292646001', '1546072967992053780', '1546073083104989224', '1546073156056391730',
-  '1543209714744041586',
-])
+export { discordConfig, isManagedTeamRole, teamRoleIds, type DiscordTeamRole }
 
-export type DiscordTeamRole = { id: string; name: string; position: number; color: number }
+async function discordFetch(path: string, init?: RequestInit) {
+  const token = await getToken(discordConfig.connector, { subject: { type: 'app' } })
+  const response = await fetch(`https://discord.com/api/v10${path}`, {
+    ...init,
+    headers: { Authorization: `Bot ${token}`, 'Content-Type': 'application/json', ...init?.headers },
+  })
+  if (!response.ok) throw new Error(`Discord request failed: ${response.status}`)
+  return response
+}
 
 export async function fetchDiscordRoles() {
-  const token = await getToken(connector, { subject: { type: 'app' } })
-  const response = await fetch(`https://discord.com/api/v10/guilds/${guildId}/roles`, {
-    headers: { Authorization: `Bot ${token}` },
-    next: { revalidate: 300, tags: ['discord-team-roles'] },
-  })
-  if (!response.ok) throw new Error(`Discord roles request failed: ${response.status}`)
+  const response = await discordFetch(`/guilds/${discordConfig.guildId}/roles`)
   const roles = (await response.json()) as DiscordTeamRole[]
   return roles.filter((role) => teamRoleIds.has(role.id)).sort((a, b) => b.position - a.position)
 }
 
+export async function saveDiscordRoles(roles: DiscordTeamRole[]) {
+  await db.delete(discordTeamRoles)
+  if (roles.length > 0) await db.insert(discordTeamRoles).values(roles.map((role) => ({ ...role, updatedAt: new Date() })))
+  return roles
+}
+
+export async function getStoredDiscordRoles() {
+  return db.select().from(discordTeamRoles).orderBy(desc(discordTeamRoles.position))
+}
+
+export async function setTeamRole(roleId: string, enabled: boolean) {
+  if (!isManagedTeamRole(roleId)) throw new Error('This role is not in the managed team-role allowlist')
+  const roles = await fetchDiscordRoles()
+  const role = roles.find((item) => item.id === roleId)
+  if (!role) throw new Error('Role not found in the configured team-role allowlist')
+  await saveDiscordRoles(enabled ? roles : roles.filter((item) => item.id !== roleId))
+  return role
+}
+
 export async function syncDiscordRoles() {
-  return fetchDiscordRoles()
+  const roles = await fetchDiscordRoles()
+  return saveDiscordRoles(roles)
+}
+
+export async function canManageDiscordMember(memberRoleIds: string[]) {
+  return memberRoleIds.some((roleId) => discordConfig.managerRoleIds.has(roleId))
 }

@@ -46,6 +46,15 @@ export const verification = pgTable('verification', {
   updatedAt: timestamp('updatedAt'),
 })
 
+export const discordTeamRoles = pgTable('discord_team_roles', {
+  id: text('id').primaryKey(),
+  name: text('name').notNull(),
+  position: integer('position').notNull().default(0),
+  color: integer('color').notNull().default(0),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+  updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+})
+
 export const teamMembers = pgTable('team_members', {
   id: serial('id').primaryKey(),
   name: text('name').notNull(),
