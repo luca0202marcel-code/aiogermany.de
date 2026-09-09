@@ -21,9 +21,9 @@ export default function UnserTeamPage() {
         <p className="eyebrow"><Shield size={14} /> Die Menschen dahinter</p>
         <h1 className="mt-6 max-w-5xl text-balance text-6xl font-black leading-[.9] tracking-[-.07em] sm:text-8xl lg:text-[9rem]">UNSER<br /><span className="neon-text">TEAM.</span></h1>
         <p className="mt-8 max-w-xl text-pretty text-lg leading-8 text-muted-foreground">Hinter jeder starken Community stehen Menschen mit Energie, Ideen und Verantwortung. Lerne die Rollen kennen, die ALL IN ONE Germany jeden Tag bewegen.</p>
-        <div className="team-stat-row mt-10"><span><b>20</b> Rollen</span><span><b>24/7</b> Support</span><span><b>1</b> Community</span></div>
+        <div className="team-stat-row mt-10"><span><b>LIVE</b> Discord Sync</span><span><b>24/7</b> Support</span><span><b>1</b> Community</span></div>
       </header>
-      <div className="relative z-10"><TeamDirectory /></div>
+      <div className="team-sync-note relative z-10 mx-auto max-w-7xl px-5 pt-8 lg:px-10"><span className="team-live-status">● LIVE AUS DISCORD</span><span> Rollen werden über den Teamrollen-Kanal verwaltet.</span></div><div className="relative z-10"><TeamDirectory /></div>
       <footer className="team-page-footer relative z-10 mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-3 px-5 pb-10 text-xs text-muted-foreground lg:px-10"><Link href="/">← Zur Startseite</Link><a href="https://team.xn--teamgrn-s2a.de/" target="_blank" rel="noreferrer">Externe Team-Seite ↗</a><Link href="/privacy">Datenschutz</Link></footer>
     </main>
   )

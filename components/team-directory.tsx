@@ -1,5 +1,6 @@
 import { Crown, Shield, Swords, Settings, Palette, PenLine, PartyPopper, Smartphone, Camera, Building2, GraduationCap, Radio } from 'lucide-react'
 import { fetchDiscordRoles } from '@/lib/discord-team'
+import { teamRoleIds } from '@/lib/discord-team-config'
 
 const roles = [
   ['🤴', 'Inhaber', Crown], ['👑', 'Stv. Inhaber', Crown], ['🧑‍💼', 'Management', Building2], ['🎓', 'Teamleitung', GraduationCap],
@@ -15,7 +16,7 @@ export async function TeamDirectory() {
   try {
     const discordRoles = await fetchDiscordRoles()
     if (discordRoles.length > 0) {
-      liveRoles = discordRoles.map((role) => ({ emoji: '◈', role: role.name }))
+      liveRoles = discordRoles.filter((role) => teamRoleIds.has(role.id)).map((role) => ({ emoji: '◈', role: role.name }))
       connected = true
     }
   } catch (error) {
