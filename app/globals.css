@@ -86,6 +86,10 @@
 .legal-menu-items { position: absolute; right: 0; bottom: 1.6rem; display: grid; min-width: 12rem; gap: .35rem; border: 1px solid rgba(0,200,255,.25); background: var(--card); padding: .65rem; box-shadow: 0 0 24px rgba(0,120,200,.15); }
 .legal-menu-items a { padding: .45rem .55rem; color: var(--muted-foreground); }
 .legal-menu-items a:hover { color: var(--primary); background: rgba(0,200,255,.08); }
+.legal-hub-card { display: flex; min-height: 20rem; flex-direction: column; border: 1px solid rgba(0,200,255,.2); background: rgba(6,20,38,.72); padding: 1.5rem; transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease; }
+.legal-hub-card:hover { transform: translateY(-6px); border-color: rgba(0,200,255,.7); background: rgba(10,32,56,.85); box-shadow: 0 0 42px rgba(0,150,220,.16); }
+.legal-hub-card .icon-box { transition: background .25s ease, color .25s ease; }
+.legal-hub-card:hover .icon-box { background: var(--primary); color: var(--primary-foreground); }
 .legal-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; }
 .legal-tabs a { border: 1px solid rgba(0,200,255,.2); padding: .45rem .65rem; color: var(--muted-foreground); font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; transition: color .2s, border-color .2s; }
 .legal-tabs a:hover { color: var(--primary); border-color: var(--primary); }

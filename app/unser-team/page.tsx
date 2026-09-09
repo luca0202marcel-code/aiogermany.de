@@ -24,7 +24,7 @@ export default function UnserTeamPage() {
         <div className="team-stat-row mt-10"><span><b>LIVE</b> Discord Sync</span><span><b>24/7</b> Support</span><span><b>1</b> Community</span></div>
       </header>
       <div className="team-sync-note relative z-10 mx-auto max-w-7xl px-5 pt-8 lg:px-10"><span className="team-live-status">● LIVE AUS DISCORD</span><span> Rollen werden über den Teamrollen-Kanal verwaltet.</span></div><div className="relative z-10"><TeamDirectory /></div>
-      <footer className="team-page-footer relative z-10 mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-3 px-5 pb-10 text-xs text-muted-foreground lg:px-10"><Link href="/">← Zur Startseite</Link><a href="https://team.xn--teamgrn-s2a.de/" target="_blank" rel="noreferrer">Externe Team-Seite ↗</a><Link href="/privacy">Datenschutz</Link></footer>
+      <footer className="team-page-footer relative z-10 mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-3 px-5 pb-10 text-xs text-muted-foreground lg:px-10"><Link href="/">← Zur Startseite</Link><a href="https://team.xn--teamgrn-s2a.de/" target="_blank" rel="noreferrer">Externe Team-Seite ↗</a><Link href="/legal">Legal</Link></footer>
     </main>
   )
 }
