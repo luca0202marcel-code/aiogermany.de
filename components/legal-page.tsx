@@ -8,6 +8,7 @@ export function LegalPage({ title, eyebrow, intro, sections }: { title: string; 
       <div className="stars" aria-hidden="true" />
       <header className="legal-header">
         <Link href="/" className="legal-brand">ALL IN <span>ONE</span> Germany</Link>
+        <nav className="legal-tabs" aria-label="Legal-Navigation"><Link href="/legal/impressum">Impressum</Link><Link href="/legal/datenschutz">Datenschutz</Link><Link href="/legal/nutzungsbedingungen">Nutzungsbedingungen</Link></nav>
         <Link href="/" className="legal-back">← Zur Startseite</Link>
       </header>
       <article className="legal-card">
