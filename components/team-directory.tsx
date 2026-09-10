@@ -1,5 +1,5 @@
 import { Crown, Shield, Swords, Settings, Palette, PenLine, PartyPopper, Smartphone, Camera, Building2, GraduationCap, Radio } from 'lucide-react'
-import { fetchDiscordRoles } from '@/lib/discord-team'
+import { fetchDiscordRoles, getStoredDiscordRoles } from '@/lib/discord-team'
 import { teamRoleIds } from '@/lib/discord-team-config'
 
 const roles = [
@@ -20,7 +20,16 @@ export async function TeamDirectory() {
       connected = true
     }
   } catch (error) {
-    console.error('[v0] Falling back to local team roles', error)
+    console.error('[v0] Discord role fetch failed; using stored roles', error)
+    try {
+      const storedRoles = await getStoredDiscordRoles()
+      if (storedRoles.length > 0) {
+        liveRoles = storedRoles.filter((role) => teamRoleIds.has(role.id)).map((role) => ({ emoji: '◈', role: role.name }))
+        connected = true
+      }
+    } catch (storageError) {
+      console.error('[v0] Stored role fallback failed', storageError)
+    }
   }
 
   return (
