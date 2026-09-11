@@ -5,6 +5,7 @@ import { discordTeamRoles } from '@/lib/db/schema'
 import { discordConfig, isManagedTeamRole, teamRoleIds, type DiscordTeamRole } from '@/lib/discord-team-config'
 
 export { discordConfig, isManagedTeamRole, teamRoleIds, type DiscordTeamRole }
+export type DiscordTeamMember = { user: { id: string; username: string; global_name?: string | null }; roles: string[]; nick?: string | null }
 
 async function discordFetch(path: string, init?: RequestInit) {
   const token = await getToken(discordConfig.connector, { subject: { type: 'app' } })
@@ -20,6 +21,11 @@ export async function fetchDiscordRoles() {
   const response = await discordFetch(`/guilds/${discordConfig.guildId}/roles`)
   const roles = (await response.json()) as DiscordTeamRole[]
   return roles.filter((role) => teamRoleIds.has(role.id)).sort((a, b) => b.position - a.position)
+}
+
+export async function fetchDiscordMembers() {
+  const response = await discordFetch(`/guilds/${discordConfig.guildId}/members?limit=1000`)
+  return (await response.json()) as DiscordTeamMember[]
 }
 
 export async function saveDiscordRoles(roles: DiscordTeamRole[]) {
