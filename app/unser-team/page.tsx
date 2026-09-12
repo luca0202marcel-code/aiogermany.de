@@ -15,7 +15,7 @@ export default function UnserTeamPage() {
       <nav className="team-page-nav relative z-10 mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-10">
         <Link href="/" className="team-back"><ArrowLeft size={16} /> Startseite</Link>
         <span className="team-kicker">ALL IN ONE / TEAM</span>
-        <a href="https://aiogermany.de/join" className="neon-button" target="_blank" rel="noreferrer">Discord <ArrowUpRight size={16} /></a>
+        <a href="https://discord.gg/KmVqZFBfSw" className="neon-button" target="_blank" rel="noreferrer">Discord <ArrowUpRight size={16} /></a>
       </nav>
       <header className="team-hero relative z-10 mx-auto max-w-7xl px-5 pb-6 pt-16 lg:px-10 lg:pb-10 lg:pt-28">
         <p className="eyebrow"><Shield size={14} /> Die Menschen dahinter</p>

@@ -20,7 +20,7 @@ export default function LegalHubPage() {
       <nav className="team-page-nav relative z-10 mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-10">
         <Link href="/" className="team-back"><ArrowLeft size={16} /> Startseite</Link>
         <span className="team-kicker">ALL IN ONE / LEGAL</span>
-        <a href="https://aiogermany.de/join" className="neon-button" target="_blank" rel="noreferrer">Discord <ArrowUpRight size={16} /></a>
+        <a href="https://discord.gg/KmVqZFBfSw" className="neon-button" target="_blank" rel="noreferrer">Discord <ArrowUpRight size={16} /></a>
       </nav>
       <header className="team-hero relative z-10 mx-auto max-w-7xl px-5 pb-12 pt-16 lg:px-10 lg:pb-16 lg:pt-28">
         <p className="eyebrow"><Scale size={14} /> Rechtliches</p>
@@ -38,7 +38,7 @@ export default function LegalHubPage() {
           </Link>
         ))}
       </section>
-      <footer className="team-page-footer relative z-10 mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-3 px-5 pb-10 text-xs text-muted-foreground lg:px-10"><Link href="/">← Zur Startseite</Link><a href="https://aiogermany.de/join" target="_blank" rel="noreferrer">Discord beitreten ↗</a></footer>
+      <footer className="team-page-footer relative z-10 mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-3 px-5 pb-10 text-xs text-muted-foreground lg:px-10"><Link href="/">← Zur Startseite</Link><a href="https://discord.gg/KmVqZFBfSw" target="_blank" rel="noreferrer">Discord beitreten ↗</a></footer>
     </main>
   )
 }
