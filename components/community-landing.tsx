@@ -1,6 +1,6 @@
 'use client'
 
-import type { CSSProperties } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { ArrowRight, Gamepad2, Headphones, MessageCircle, ShieldCheck, Sparkles, Trophy, Users, Zap } from 'lucide-react'
 import { ServerRules } from './server-rules'
 
@@ -16,10 +16,13 @@ const features = [
 ]
 
 export function CommunityLanding() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <div className="stars" aria-hidden="true" /><div className="scanline" aria-hidden="true" />
-      <aside className="site-sidebar" aria-label="Seitennavigation"><a href="#top" className="sidebar-mark">AIO<span>.</span></a><nav><a href="#community">Community</a><a href="#features">Features</a><a href="/unser-team">Team</a><a href="https://www.aiogermany.de/regelwerk" target="_blank" rel="noreferrer">Regelwerk</a><a href="#projects">Projekte</a></nav><a href="https://aiogermany.de/join" target="_blank" rel="noreferrer" className="sidebar-join">JOIN</a></aside>
+      <button type="button" className="sidebar-toggle" aria-expanded={menuOpen} aria-controls="site-navigation" aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button>
+      <aside id="site-navigation" className={`site-sidebar ${menuOpen ? 'is-open' : ''}`} aria-label="Seitennavigation"><a href="#top" className="sidebar-mark" onClick={() => setMenuOpen(false)}>AIO<span>.</span></a><nav><a href="#community" onClick={() => setMenuOpen(false)}>Community</a><a href="#features" onClick={() => setMenuOpen(false)}>Features</a><a href="/unser-team" onClick={() => setMenuOpen(false)}>Team</a><a href="https://www.aiogermany.de/regelwerk" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Regelwerk</a><a href="#projects" onClick={() => setMenuOpen(false)}>Projekte</a></nav><a href="https://aiogermany.de/join" target="_blank" rel="noreferrer" className="sidebar-join" onClick={() => setMenuOpen(false)}>JOIN</a></aside>
       <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-10">
         <a href="#top" className="flex items-center gap-3" aria-label="ALL IN ONE Germany Startseite">
           <img src={logoUrl} alt="ALL IN ONE Germany Logo" className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/60" />
