@@ -19,13 +19,13 @@ export function CommunityLanding() {
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <div className="stars" aria-hidden="true" /><div className="scanline" aria-hidden="true" />
-      <aside className="site-sidebar" aria-label="Seitennavigation"><a href="#top" className="sidebar-mark">AIO<span>.</span></a><nav><a href="#community">Community</a><a href="#features">Features</a><a href="/unser-team">Team</a><a href="#rules">Regeln</a><a href="#projects">Projekte</a></nav><a href="https://aiogermany.de/join" target="_blank" rel="noreferrer" className="sidebar-join">JOIN</a></aside>
+      <aside className="site-sidebar" aria-label="Seitennavigation"><a href="#top" className="sidebar-mark">AIO<span>.</span></a><nav><a href="#community">Community</a><a href="#features">Features</a><a href="/unser-team">Team</a><a href="https://www.aiogermany.de/regelwerk" target="_blank" rel="noreferrer">Regelwerk</a><a href="#projects">Projekte</a></nav><a href="https://aiogermany.de/join" target="_blank" rel="noreferrer" className="sidebar-join">JOIN</a></aside>
       <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-10">
         <a href="#top" className="flex items-center gap-3" aria-label="ALL IN ONE Germany Startseite">
           <img src={logoUrl} alt="ALL IN ONE Germany Logo" className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/60" />
           <span className="hidden font-mono text-sm font-bold tracking-[0.18em] sm:block">ALL IN <span className="text-primary">ONE</span></span>
         </a>
-        <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex"><a href="#community" className="hover:text-primary">Community</a><a href="#features" className="hover:text-primary">Features</a><a href="/unser-team" className="hover:text-primary">Unser Team</a><a href="https://team.xn--teamgrn-s2a.de/" target="_blank" rel="noreferrer" className="hover:text-primary">Zum Team-Bereich</a><a href="#rules" className="hover:text-primary">Regelwerk</a><a href="#projects" className="hover:text-primary">Projekte</a></div>
+        <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex"><a href="#community" className="hover:text-primary">Community</a><a href="#features" className="hover:text-primary">Features</a><a href="/unser-team" className="hover:text-primary">Unser Team</a><a href="https://team.xn--teamgrn-s2a.de/" target="_blank" rel="noreferrer" className="hover:text-primary">Zum Team-Bereich</a><a href="https://www.aiogermany.de/regelwerk" target="_blank" rel="noreferrer" className="hover:text-primary">Regelwerk</a><a href="#projects" className="hover:text-primary">Projekte</a></div>
         <a href="https://aiogermany.de/join" target="_blank" rel="noreferrer" className="neon-button hidden sm:inline-flex">Discord beitreten <ArrowRight size={16} /></a>
       </nav>
 
