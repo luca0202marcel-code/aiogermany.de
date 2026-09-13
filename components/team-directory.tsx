@@ -16,7 +16,7 @@ export async function TeamDirectory() {
   try {
     const [discordRoles, discordMembers] = await Promise.all([fetchDiscordRoles(), fetchDiscordMembers()])
     const roleNames = new Map(discordRoles.map((role) => [role.id, role.name]))
-    const liveMembers = discordMembers.flatMap((member) => member.roles.filter((roleId) => teamRoleIds.has(roleId) && !discordConfig.managerRoleIds.has(roleId)).map((roleId) => ({ emoji: '◈', role: roleNames.get(roleId) ?? 'Team', member: member.nick || member.user.global_name || member.user.username })))
+    const liveMembers = discordMembers.flatMap((member) => member.roles.filter((roleId) => teamRoleIds.has(roleId)).map((roleId) => ({ emoji: '◈', role: roleNames.get(roleId) ?? 'Team', member: member.nick || member.user.global_name || member.user.username })))
     if (liveMembers.length > 0) {
       liveRoles = liveMembers
       connected = true

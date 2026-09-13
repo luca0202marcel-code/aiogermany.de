@@ -8,9 +8,10 @@ export { discordConfig, isManagedTeamRole, teamRoleIds, type DiscordTeamRole }
 export type DiscordTeamMember = { user: { id: string; username: string; global_name?: string | null }; roles: string[]; nick?: string | null }
 
 async function discordFetch(path: string, init?: RequestInit) {
-  const token = await getToken(discordConfig.connector, { subject: { type: 'app' } })
+  const token = process.env.DISCORD_BOT_TOKEN || await getToken(discordConfig.connector, { subject: { type: 'app' } })
   const response = await fetch(`https://discord.com/api/v10${path}`, {
     ...init,
+    cache: 'no-store',
     headers: { Authorization: `Bot ${token}`, 'Content-Type': 'application/json', ...init?.headers },
   })
   if (!response.ok) throw new Error(`Discord request failed: ${response.status}`)
@@ -24,8 +25,16 @@ export async function fetchDiscordRoles() {
 }
 
 export async function fetchDiscordMembers() {
-  const response = await discordFetch(`/guilds/${discordConfig.guildId}/members?limit=1000`)
-  return (await response.json()) as DiscordTeamMember[]
+  const members: DiscordTeamMember[] = []
+  let after = '0'
+  while (members.length < 1000) {
+    const response = await discordFetch(`/guilds/${discordConfig.guildId}/members?limit=1000&after=${after}`)
+    const batch = (await response.json()) as DiscordTeamMember[]
+    members.push(...batch)
+    if (batch.length < 1000) break
+    after = batch[batch.length - 1]?.user.id ?? after
+  }
+  return members
 }
 
 export async function saveDiscordRoles(roles: DiscordTeamRole[]) {
