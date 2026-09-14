@@ -11,7 +11,7 @@ const commands = [
 client.once(Events.ClientReady, async c => {
   const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN)
   await rest.put(Routes.applicationGuildCommands(process.env.DISCORD_APPLICATION_ID, guildId), { body: commands })
-  await rest.post(Routes.channelMessages(channelId), { body: { content: 'AIO TEAMLISTE ONLINE\nTeamrollen werden hier verwaltet. Website-Sync: https://aiogermany.de/unser-team' } })
+  await rest.post(Routes.channelMessages(channelId), { body: { content: 'AIO TEAMLISTE ONLINE\nTeamrollen werden hier verwaltet. Website-Sync: https://team.aiogermany.de' } })
   console.log(`[worker] ${c.user.tag} online; slash commands registered; team channel synced`)
 })
 client.on(Events.InteractionCreate, async interaction => {

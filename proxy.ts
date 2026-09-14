@@ -9,11 +9,6 @@ export function proxy(request: NextRequest) {
     url.protocol = 'https:'
     return NextResponse.redirect(url, 308)
   }
-  if (host === 'admin.aiogermany.de' && !request.nextUrl.pathname.startsWith('/admin') && !request.nextUrl.pathname.startsWith('/api')) {
-    const url = request.nextUrl.clone()
-    url.pathname = `/admin${request.nextUrl.pathname === '/' ? '' : request.nextUrl.pathname}`
-    return NextResponse.rewrite(url)
-  }
   return NextResponse.next()
 }
 
