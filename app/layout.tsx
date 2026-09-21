@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'ALL IN ONE Germany | Deine Community',
-  description: 'Die deutschsprachige Community für Gaming, Unterhaltung, Austausch und gemeinsame Projekte.',
+  title: 'aiogermany.de | Wartungsarbeiten',
+  description: 'aiogermany.de wird aktuell gewartet. Rechtliche Informationen finden Sie hier.',
   generator: 'v0.app',
   icons: {
     icon: [
