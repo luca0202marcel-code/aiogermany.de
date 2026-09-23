@@ -1,11 +1,3 @@
-import Link from 'next/link'
-
-const legalLinks = [
-  { href: '/legal/impressum', label: 'Impressum' },
-  { href: '/legal/datenschutz', label: 'Datenschutz' },
-  { href: '/legal/nutzungsbedingungen', label: 'Nutzungsbedingungen' },
-]
-
 export default function Page() {
   return (
     <main className="maintenance-page">
@@ -16,13 +8,6 @@ export default function Page() {
         <p className="maintenance-text">
           Unsere Website wird gerade überarbeitet. Wir sind bald wieder für euch da.
         </p>
-        <nav className="maintenance-links" aria-label="Rechtliche Informationen">
-          {legalLinks.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
       </section>
     </main>
   )

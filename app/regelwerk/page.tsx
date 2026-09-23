@@ -36,7 +36,7 @@ export default function RegelwerkPage() {
         <div className="rules-grid">{rules.map(([number, title, text]) => <article className="rule-card" key={number}><span className="rule-number">{number}</span><div><h2 className="font-bold">{title}</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p></div></article>)}</div>
         <p className="mt-8 border border-primary/25 bg-card/60 p-5 text-center text-sm font-semibold text-primary"><ShieldCheck className="mr-2 inline-block" size={18} />Mit dem Betreten und Nutzen des Servers akzeptierst du dieses Regelwerk.</p>
       </section>
-      <footer className="team-page-footer relative z-10 mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-3 px-5 pb-10 text-xs text-muted-foreground lg:px-10"><Link href="/">← Zur Startseite</Link><Link href="/unser-team">Unser Team</Link><Link href="/legal">Legal</Link></footer>
+      <footer className="team-page-footer relative z-10 mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-3 px-5 pb-10 text-xs text-muted-foreground lg:px-10"><Link href="/">← Zur Startseite</Link><Link href="/unser-team">Unser Team</Link></footer>
     </main>
   )
 }
