@@ -13,7 +13,6 @@ export default function NutzungsbedingungenPage() {
     { title: '6. Nutzerinhalte', body: ['Für selbst veröffentlichte Inhalte ist grundsätzlich das jeweilige Mitglied verantwortlich. Es dürfen nur Inhalte veröffentlicht werden, deren Veröffentlichung rechtlich zulässig ist.'] },
     { title: '7. Werbung', body: ['Werbung, Einladungslinks und sonstige werbliche Inhalte sind nur erlaubt, wenn dies ausdrücklich durch die Serverregeln oder das Team gestattet wurde. Unerlaubte Direktnachrichten-Werbung ist untersagt.'] },
     { title: '8. Haftung', body: ['Die Nutzung unserer Angebote erfolgt im Rahmen der geltenden gesetzlichen Bestimmungen. Eine Haftung wird, soweit gesetzlich zulässig, ausgeschlossen. Zwingende gesetzliche Haftung bleibt hiervon unberührt.'] },
-    { title: '9. Kontakt', body: ['Bei Fragen kann Kontakt aufgenommen werden: aiogermany.socialmedia@gmail.com'] },
     { title: '10. Änderungen', body: ['Diese Nutzungsbedingungen können angepasst werden, wenn dies aufgrund technischer, organisatorischer oder rechtlicher Änderungen erforderlich ist.'] },
   ]} />
 }
